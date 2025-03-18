@@ -15,18 +15,19 @@ app.add_middleware(CORSMiddleware,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
-    )                  
+    )  
+                
 # loading Encoders & Model
-with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\CarPricePreditionProject\label_encoders.pkl", "rb") as f:
+with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\Car_Price_Predition_Project\label_encoders.pkl", "rb") as f:
     label_encoders = pickle.load(f)
 
-with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\CarPricePreditionProject\One_Hot_Encoder.pkl", "rb") as f:
+with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\Car_Price_Predition_Project\One_Hot_Encoder.pkl", "rb") as f:
     One_Hot_Encoder = pickle.load(f)
 
-with open (r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\CarPricePreditionProject\scaler.pkl", "rb") as file : 
+with open (r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\Car_Price_Predition_Project\scaler.pkl", "rb") as file : 
     scaler = pickle.load(file)
 
-with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\CarPricePreditionProject\RandomForestRegressor_model.pkl","rb") as file2 : 
+with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\Car_Price_Predition_Project\RandomForestRegressor_model.pkl","rb") as file2 : 
      RandomForestRegressor_model = pickle.load(file2)
 
 class CarInput(BaseModel):
@@ -86,7 +87,7 @@ def predict(car_data:CarInput):
         df2 = df2[order_in_fit]
 
         # Feature Scaling
-        Scaling_feature = ["Levy", "Engine_volume","Mileage", "Age_of_Car"]
+        Scaling_feature = ["Levy", "Engine_volume", "Mileage", "Age_of_Car"]
         df2[Scaling_feature] = scaler.transform(df2[Scaling_feature])
 
         # Prediction

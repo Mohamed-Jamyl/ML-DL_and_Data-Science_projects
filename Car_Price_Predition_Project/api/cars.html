@@ -5,37 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Price Prediction</title>
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="cars.css?v=2">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .output {
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="icon" href="imgs/logo.png"/>
 </head>
 <body>
     <div class="container">
         <h1 class="text-center">Car Price Prediction</h1>
-        <p class="text-center">Fill in the details below to predict the car price</p>
+       <!-- <p class="text-center">Fill in the details below to predict the car price</p>  --!>
 
         <form id="predictionForm">
             <!-- Row 1 -->
             <div class="row">
                 <div class="col-md-4">
-                    <label for="Levy" class="form-label">Levy (87 - 11714)</label>
-                    <input type="number" id="Levy" name="Levy" class="form-control" required>
+                    <input type="number" id="Airbags" name="Airbags" class="form-control" placeholder="Airbags (0 - 16)">
                 </div>
                 <div class="col-md-4">
-                    <label for="Prod_year" class="form-label">Production Year (1939 to 2020)</label>
-                    <input type="number" id="Prod_year" name="Prod_year" class="form-control" min="1886" max="2024" required>
+                    <input type="number" id="Prod_year" name="Prod_year" class="form-control" min="1886" max="2024" placeholder="Production Year (1939 to 2020)" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="Manufacturer" class="form-label">Manufacturer</label>
+                    <input type="number" id="Levy" name="Levy" class="form-control" placeholder="Levy (87 - 11714)" required>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <input type="number" id="Cylinders" name="Cylinders" class="form-control" placeholder="Cylinders (1 - 16)" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="number" step="0.1" id="Engine_volume" name="Engine_volume" class="form-control" placeholder="Engine Volume (0.0 - 20.0)" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="number" id="Mileage" name="Mileage" class="form-control" placeholder="Mileage (Km)" required>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <select id="Fuel_type" name="Fuel_type" class="form-select" required>
+                        <option value="">Select Fuel Type</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="CNG">CNG</option>
+                        <option value="Plug-in Hybrid">Plug-in Hybrid</option>
+                        <option value="LPG">LPG</option>
+                        <option value="Hydrogen">Hydrogen</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="Category" name="Category" class="form-select" required>
+                        <option value="">Select Category</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Microbus">Microbus</option>
+                        <option value="Goods wagon">Goods wagon</option>
+                        <option value="Universal">Universal</option>
+                        <option value="Coupe">Coupe</option>
+                        <option value="Minivan">Minivan</option>
+                        <option value="Cabriolet">Cabriolet</option>
+                        <option value="Limousine">Limousine</option>
+                        <option value="Pickup">Pickup</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="Leather_interior" name="Leather_interior" class="form-select" required>
+                        <option value="">Leather Interior ?</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <select id="Model" name="Model" class="form-select" required>
+                        <option value="">Select Model</option>
+                        <option value="Prius">Prius</option>
+                        <option value="RX 450">RX 450</option>
+                        <option value="Sonata">Sonata</option>
+                        <option value="Camry">Camry</option>
+                        <option value="Elantra">Elantra</option>
+                        <option value="E 350">E 350</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="Gear_box_type" name="Gear_box_type" class="form-select" required>
+                        <option value="">Select Gear Box Type</option>
+                        <option value="Automatic">Automatic</option>
+                        <option value="Manual">Manual</option>
+                        <option value="Tiptronic">Tiptronic</option>
+                        <option value="Variator">Variator</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="Drive_wheels" name="Drive_wheels" class="form-select" required>
+                        <option value="">Select Drive Wheels</option>
+                        <option value="4x4">4x4</option>
+                        <option value="Front">Front</option>
+                        <option value="Rear">Rear</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <select id="Wheel" name="Wheel" class="form-select" required>
+                        <option value="">Wheels</option>
+                        <option value="Left wheel">Left wheel</option>
+                        <option value="Right-hand drive">Right-hand drive</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="Color" name="Color" class="form-select" required>
+                        <option value="">Select Color</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                        <option value="Grey">Grey</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Green">Green</option>
+                        <option value="Red">Red</option>
+                        <option value="Sky blue">Sky blue</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Brown">Brown</option>
+                        <option value="Golden">Golden</option>
+                        <option value="Beige">Beige</option>
+                        <option value="Carnelian red">Carnelian red</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Pink">Pink</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
                     <select id="Manufacturer" name="Manufacturer" class="form-select" required>
                         <option value="">Select Manufacturer</option>
                         <option value="LEXUS">LEXUS</option>
@@ -66,131 +173,8 @@
                 </div>
             </div>
 
-            <!-- Row 2 -->
-            <div class="row mt-3">
-                <div class="col-md-4">
-                    <label for="Model" class="form-label">Model</label>
-                    <select id="Model" name="Model" class="form-select" required>
-                        <option value="Prius">Prius</option>
-                        <option value="RX 450">RX 450</option>
-                        <option value="Sonata">Sonata</option>
-                        <option value="Camry">Camry</option>
-                        <option value="Elantra">Elantra</option>
-                        <option value="E 350">E 350</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="Category" class="form-label">Category</label>
-                    <select id="Category" name="Category" class="form-select" required>
-                        <option value="Jeep">Jeep</option>
-                        <option value="Hatchback">Hatchback</option>
-                        <option value="Sedan">Sedan</option>
-                        <option value="Microbus">Microbus</option>
-                        <option value="Goods wagon">Goods wagon</option>
-                        <option value="Universal">Universal</option>
-                        <option value="Coupe">Coupe</option>
-                        <option value="Minivan">Minivan</option>
-                        <option value="Cabriolet">Cabriolet</option>
-                        <option value="Limousine">Limousine</option>
-                        <option value="Pickup">Pickup</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="Leather_interior" class="form-label">Leather Interior</label>
-                    <select id="Leather_interior" name="Leather_interior" class="form-select" required>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Row 3 -->
-            <div class="row mt-3">
-                <div class="col-md-4">
-                    <label for="Fuel_type" class="form-label">Fuel Type</label>
-                    <select id="Fuel_type" name="Fuel_type" class="form-select" required>
-                        <option value="Hybrid">Hybrid</option>
-                        <option value="Petrol">Petrol</option>
-                        <option value="Diesel">Diesel</option>
-                        <option value="CNG">CNG</option>
-                        <option value="Plug-in Hybrid">Plug-in Hybrid</option>
-                        <option value="LPG">LPG</option>
-                        <option value="Hydrogen">Hydrogen</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="Engine_volume" class="form-label">Engine Volume (0.0 - 20.0)</label>
-                    <input type="number" step="0.1" id="Engine_volume" name="Engine_volume" class="form-control" required>
-                </div>
-                <div class="col-md-4">
-                    <label for="Mileage" class="form-label">Mileage (Km)</label>
-                    <input type="number" id="Mileage" name="Mileage" class="form-control" required>
-                </div>
-            </div>
-
-            <!-- Row 4 -->
-            <div class="row mt-3">
-                <div class="col-md-4">
-                    <label for="Cylinders" class="form-label">Cylinders (1 - 16)</label>
-                    <input type="number" id="Cylinders" name="Cylinders" class="form-control" required>
-                </div>
-                <div class="col-md-4">
-                    <label for="Gear_box_type" class="form-label">Gear Box Type</label>
-                    <select id="Gear_box_type" name="Gear_box_type" class="form-select" required>
-                        <option value="Automatic">Automatic</option>
-                        <option value="Manual">Manual</option>
-                        <option value="Tiptronic">Tiptronic</option>
-                        <option value="Variator">Variator</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="Drive_wheels" class="form-label">Drive Wheels</label>
-                    <select id="Drive_wheels" name="Drive_wheels" class="form-select" required>
-                        <option value="4x4">4x4</option>
-                        <option value="Front">Front</option>
-                        <option value="Rear">Rear</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Row 5 -->
-            <div class="row mt-3">
-                <div class="col-md-4">
-                    <label for="Wheel" class="form-label">Wheel</label>
-                    <select id="Wheel" name="Wheel" class="form-select" required>
-                        <option value="Left wheel">Left wheel</option>
-                        <option value="Right-hand drive">Right-hand drive</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="Color" class="form-label">Color</label>
-                    <select id="Color" name="Color" class="form-select" required>
-                        <option value="Silver">Silver</option>
-                        <option value="Black">Black</option>
-                        <option value="White">White</option>
-                        <option value="Grey">Grey</option>
-                        <option value="Blue">Blue</option>
-                        <option value="Green">Green</option>
-                        <option value="Red">Red</option>
-                        <option value="Sky blue">Sky blue</option>
-                        <option value="Orange">Orange</option>
-                        <option value="Yellow">Yellow</option>
-                        <option value="Brown">Brown</option>
-                        <option value="Golden">Golden</option>
-                        <option value="Beige">Beige</option>
-                        <option value="Carnelian red">Carnelian red</option>
-                        <option value="Purple">Purple</option>
-                        <option value="Pink">Pink</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="Airbags" class="form-label">Airbags (0 - 16)</label>
-                    <input type="number" id="Airbags" name="Airbags" class="form-control" required>
-                </div>
-            </div>
-
             <!-- Submit Button -->
-            <div class="text-center mt-4">
+            <div class="btn">
                 <button type="button" class="btn btn-primary" onclick="submitForm()">Predict</button>
             </div>
         </form>
@@ -224,7 +208,7 @@
 
                 const result = await response.json();
                 document.getElementById("output").innerHTML = 
-                    `<div class="alert alert-success">Car Price : $${result.Prediction.toFixed(2)}</div>`;
+                    `<div class="alert-success">Car Price : $${result.Prediction.toFixed(2)}</div>`;
             } catch (error) {
                 document.getElementById("output").innerHTML = 
                     `<div class="alert alert-danger">Error: ${error.message}</div>`;
