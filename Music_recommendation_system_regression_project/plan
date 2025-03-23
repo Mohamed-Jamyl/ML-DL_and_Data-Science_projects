@@ -1,4 +1,5 @@
-- Feature Engineering : Feature extaction
+A- Feature Engineering : 
+   -Feature extaction
 
     1 - Extracting new column [duration_min] from column [duration_ms]
 
@@ -72,15 +73,9 @@
             Moderately popular song                                                        
         if popularity >= 70  and popularity <= 100:
             Very popular song
-            
-    
-    11 - release_date
-         year 
-         month
-         day
 
 
-    12 - Extracting new column [type_of_song_by_speechiness] from [speechiness]
+    11 - Extracting new column [type_of_song_by_speechiness] from [speechiness]
         if speechiness < 0.3 :
             Mostly instrumental song
         if speechiness >= 0.3 and speechiness < 0.7 :
@@ -88,7 +83,7 @@
         if speechiness >= 0.7 and speechiness <= 1.0:
             Podcasts or speech-heavy rap
     
-    13 - Extracting new column [type_of_tempo_in_Beats_Per_Minute(BPM)] from [tempo]
+    12 - Extracting new column [type_of_tempo_in_Beats_Per_Minute(BPM)] from [tempo]
         if tempo >= 40 and tempo < 80 :
             Slow song
         if tempo >= 80 and tempo < 120 :
@@ -96,5 +91,10 @@
         if tempo >= 120 and tempo <= 180:
             Fast-paced song
     
+
+  - Feature selection
+    
+    1 - drop_columns['release_date','id','artists','name']
+
     
     
