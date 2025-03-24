@@ -1,78 +1,78 @@
 A- Feature Engineering : 
    -Feature extaction
 
-    1 - Extracting new column [duration_min] from column [duration_ms]
+    // 1 - Extracting new column [duration_min] from column [duration_ms]
 
-    2 - Extracting new column [type_of_song_by_valence] from [valence]
-        if valence < 0.3 :
-            Sad song
-        if valence >= 0.3 and valence < 0.6 :
-            Balance song between sadness and joy                                                    visiualisation
-        if valence >= 0.6 and valence <= 1.0:
-            Happy song
+    // 2 - Extracting new column [type_of_song_by_valence] from [valence]
+    //     if valence < 0.3 :
+    //         Sad song
+    //     if valence >= 0.3 and valence < 0.6 :
+    //         Balance song between sadness and joy                                                    visiualisation
+    //     if valence >= 0.6 and valence <= 1.0:
+    //         Happy song
   
-    3 - Extracting new column [type_of_song_by_acousticness] from [acousticness]
-         if acousticness < 0.3 :
-            Highly electronic song
-        if acousticness >= 0.3 and acousticness < 0.6 :
-            Mix of acoustic and electronic instruments                                             visiualisation
-        if acousticness >= 0.6 and acousticness <= 1.0:
-            Mostly acoustic song 
+    // 3 - Extracting new column [type_of_song_by_acousticness] from [acousticness]
+    //      if acousticness < 0.3 :
+    //         Highly electronic song
+    //     if acousticness >= 0.3 and acousticness < 0.6 :
+    //         Mix of acoustic and electronic instruments                                             
+    //     if acousticness >= 0.6 and acousticness <= 1.0:
+    //         Mostly acoustic song 
 
-    4 - Extracting new column [type_of_song_by_danceability] from [danceability]
-        if danceability < 0.4 :
-            Not suitable for dance
-        if danceability >= 0.4 and danceability < 0.7 :
-            Medium-paced song                                                                           visiualisation
-        if danceability >= 0.7 and danceability <= 1.0:
-            Highly danceable song
+    // 4 - Extracting new column [type_of_song_by_danceability] from [danceability]
+    //     if danceability < 0.4 :
+    //         Not suitable for dance
+    //     if danceability >= 0.4 and danceability < 0.7 :
+    //         Medium-paced song                                                                           
+    //     if danceability >= 0.7 and danceability <= 1.0:
+    //         Highly danceable song
 
-    5 - Extracting new column [Energy_Level_of_the_Song] from [energy]
-         if energy < 0.3 :
-            Slow song
-        if energy >= 0.3 and energy < 0.6 :
-            Medium-energy song                                                                            visiualisation
-        if energy >= 0.6 and energy <= 1.0:
-            High-energy song(Enthusiastic) 
+    // 5 - Extracting new column [Energy_Level_of_the_Song] from [energy]
+    //      if energy < 0.3 :
+    //         Slow song
+    //     if energy >= 0.3 and energy < 0.6 :
+    //         Medium-energy song                                                                           
+    //     if energy >= 0.6 and energy <= 1.0:
+    //         High-energy song (Enthusiastic) 
 
-    6 - Extracting new column [type_of_song_by_instrumentalness] from [instrumentalness]
-        if instrumentalness < 0.3 :
-           Song clearly contains lyrics
-        if instrumentalness >= 0.3 and instrumentalness < 0.7 :
-           Song contain some words                                                                 visiualisation
-        if instrumentalness >= 0.7 and instrumentalness <= 1.0:
-           Nearly purely instrumental song 
+    // 6 - Extracting new column [type_of_song_by_instrumentalness] from [instrumentalness]
+    //     if instrumentalness < 0.3 :
+    //        Song clearly contains lyrics
+    //     if instrumentalness >= 0.3 and instrumentalness < 0.7 :
+    //        Song contain some words                                                                 
+    //     if instrumentalness >= 0.7 and instrumentalness <= 1.0:
+    //        Nearly purely instrumental song 
 
-    7 - Extracting new column [type_of_song_by_liveness] from [liveness]
-        if liveness < 0.3 :
-            Pure studio recordings
-        if liveness >= 0.3 and liveness < 0.7 :
-            Records may have a simple reaction with the audience                                                                           visiualisation
-        if liveness >= 0.7 and liveness <= 1.0:
-            Clearly a live recording with an audience
+    // 7 - Extracting new column [type_of_song_by_liveness] from [liveness]
+    //     if liveness < 0.3 :
+    //         Pure studio recordings
+    //     if liveness >= 0.3 and liveness < 0.7 :
+    //         Records may have a simple reaction with the audience                                                                           visiualisation
+    //     if liveness >= 0.7 and liveness <= 1.0:
+    //         Clearly a live recording with an audience
     
-    8 - Extracting new column [type_of_song_by_loudness(dB)] from [loudness]
-        if loudness <= -30  and loudness > -60 :
-            Quieter Sound
-        if loudness <-5 and loudness > -30 :                                                   visiualisation          
-            Quiet song                                                                                                                    
-        if loudness >= -5:
-            Loud song
+    // 8 - Extracting new column [type_of_song_by_loudness(dB)] from [loudness]
+    //     if loudness <= -30  and loudness > -60 :
+    //         Quieter Sound
+    //     if loudness <-5 and loudness > -30 :                                                         
+    //         Quiet song                                                                                                                    
+    //     if loudness >= -5:
+    //         Loud song
 
-    9 - Extracting new column [type_of_song_by_mode] from [mode]
-        if mode == 0   :
-            Sad tone (Minor)                                                                    visiualisation
-        if mode == 1   :
-            happy tone (Major)
+    // 9 - Extracting new column [type_of_song_by_mode] from [mode]
+    //     if mode == 0   :
+    //         Sad tone (Minor)                                                                    visiualisation
+    //     if mode == 1   :
+    //         happy tone (Major)
     
 
-    10 - Extracting new column [type_of_popularity] from [popularity]
-        if popularity >= 0  and popularity < 30 :
-            Unpopular song
-        if popularity >= 30 and popularity < 70 :                                              visiualisation
-            Moderately popular song                                                        
-        if popularity >= 70  and popularity <= 100:
-            Very popular song
+    // 10 - Extracting new column [type_of_popularity] from [popularity]
+    //     if popularity >= 0  and popularity < 30 :
+    //         Unpopular song
+    //     if popularity >= 30 and popularity < 70 :                                             
+    //         Moderately popular song                                                        
+    //     if popularity >= 70  and popularity <= 100:
+    //         Very popular song
 
 
     11 - Extracting new column [type_of_song_by_speechiness] from [speechiness]
@@ -94,7 +94,7 @@ A- Feature Engineering :
 
   - Feature selection
     
-    1 - drop_columns['release_date','id','artists','name']
+    1 - drop_columns['release_date','id','artists','name','duration_ms']
 
     
     
