@@ -84,18 +84,9 @@ G-Feature extaction
             Sad tone (Minor)                                                                    
         if mode == 1   :
             happy tone (Major)
-    
+  
 
-    10 - Extracting new column [type_of_popularity] from [popularity]
-        if popularity >= 0  and popularity < 30 :
-            Unpopular song
-        if popularity >= 30 and popularity < 70 :                                             
-            Moderately popular song                                                        
-        if popularity >= 70  and popularity <= 100:
-            Very popular song
-
-
-    11 - Extracting new column [type_of_song_by_speechiness] from [speechiness]
+    10 - Extracting new column [type_of_song_by_speechiness] from [speechiness]
         if speechiness < 0.3 :
             Mostly instrumental song
         if speechiness >= 0.3 and speechiness < 0.7 :
@@ -103,7 +94,7 @@ G-Feature extaction
         if speechiness >= 0.7 and speechiness <= 1.0:
             Podcasts or speech-heavy rap
     
-    12 - Extracting new column [type_of_tempo_in_Beats_Per_Minute(BPM)] from [tempo]
+    11 - Extracting new column [type_of_tempo_in_Beats_Per_Minute(BPM)] from [tempo]
         if tempo >= 40 and tempo < 80 :
             Slow song
         if tempo >= 80 and tempo < 120 :
