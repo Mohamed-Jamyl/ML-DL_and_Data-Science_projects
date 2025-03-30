@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 800px; /* زيادة العرض ليتناسب مع التنسيق الأفقي */
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* تحديد عمودين */
+            gap: 20px; /* إضافة مسافة بين الحقول */
+        }
+        input, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        button {
+            grid-column: span 2; /* جعل الزر يغطي العمودين */
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Music Recommendation</h2>
+        <form id="musicForm">
+            <input type="text" id="valence" placeholder="Valence" required>
+            <input type="number" id="year" placeholder="Year" required>
+            <input type="text" id="acousticness" placeholder="Acousticness" required>
+            <input type="text" id="danceability" placeholder="Danceability" required>
+            <input type="text" id="energy" placeholder="Energy" required>
+            <input type="number" id="explicit" placeholder="Explicit (0 or 1)" required>
+            <input type="text" id="instrumentalness" placeholder="Instrumentalness" required>
+            <input type="number" id="key" placeholder="Key" required>
+            <input type="text" id="liveness" placeholder="Liveness" required>
+            <input type="text" id="loudness" placeholder="Loudness" required>
+            <input type="number" id="mode" placeholder="Mode (0 or 1)" required>
+            <input type="text" id="speechiness" placeholder="Speechiness" required>
+            <input type="text" id="tempo" placeholder="Tempo" required>
+            <input type="number" id="duration_ms" placeholder="Duration (ms)" required>
+            <button type="submit">Predict</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById("musicForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const formData = {
+                valence: parseFloat(document.getElementById("valence").value),
+                year: parseInt(document.getElementById("year").value),
+                acousticness: parseFloat(document.getElementById("acousticness").value),
+                danceability: parseFloat(document.getElementById("danceability").value),
+                energy: parseFloat(document.getElementById("energy").value),
+                explicit: parseInt(document.getElementById("explicit").value),
+                instrumentalness: parseFloat(document.getElementById("instrumentalness").value),
+                key: parseInt(document.getElementById("key").value),
+                liveness: parseFloat(document.getElementById("liveness").value),
+                loudness: parseFloat(document.getElementById("loudness").value),
+                mode: parseInt(document.getElementById("mode").value),
+                speechiness: parseFloat(document.getElementById("speechiness").value),
+                tempo: parseFloat(document.getElementById("tempo").value),
+                duration_ms: parseInt(document.getElementById("duration_ms").value)
+            };
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/predict/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                });
+                const data = await response.json();
+                document.getElementById("result").textContent = response.ok ? `Popularity: ${data.Prediction}` : `Error: ${data.detail}`;
+            } catch (error) {
+                document.getElementById("result").textContent = "An error occurred while fetching data";
+            }
+        });
+    </script>
+</body>
+</html>
