@@ -67,7 +67,7 @@ G-Feature extaction
         if liveness < 0.3 :
             Pure studio recordings
         if liveness >= 0.3 and liveness < 0.7 :
-            Records may have a simple reaction with the audience                                                                           visiualisation
+            Records may have a simple reaction with the audience                                                                           
         if liveness >= 0.7 and liveness <= 1.0:
             Clearly a live recording with an audience
     
