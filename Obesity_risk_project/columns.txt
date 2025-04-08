@@ -1,0 +1,18 @@
+id : Identifier for each record or individual in the dataset.
+Gender : Gender of the individual (Male/Female).
+Age : Age in years.
+Height : Height in meters.
+Weight : Weight in kilograms.
+family_history_with_overweight : Whether the individual has a family history of overweight (Yes/No).
+FAVC : Frequent consumption of high-caloric food (Yes/No).
+FCVC : Frequency of vegetable consumption – usually on a scale (e.g., 1 to 3).
+NCP : Number of main meals the person eats per day.
+CAEC : Consumption of food between meals – categories like: No, Sometimes, Frequently, Always.
+SMOKE : Whether the person smokes (Yes/No).
+CH2O : Daily water consumption – often measured on a scale (e.g., 1 = low, 3 = high).
+SCC : Whether the person takes calorie supplements (Yes/No).
+FAF : Physical activity frequency – hours of physical activity per week.
+TUE : Time spent using technology (e.g., screen time) in hours.
+CALC : Alcohol consumption – categories like: No, Sometimes, Frequently.
+MTRANS : Means of transportation used – e.g., Walking, Bike, Public_Transportation, etc.
+NObeyesdad : Target label – Obesity level class, such as: Insufficient_Weight, Normal_Weight, Overweight_Level_I, Obesity_Type_I, etc.
