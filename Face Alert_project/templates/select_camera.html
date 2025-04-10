@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Camera</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .camera-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .camera-container h1 {
+            margin-bottom: 20px;
+        }
+        .camera-container a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .logout-link {
+            margin-top: 20px;
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="camera-container">
+        <h1>Select Camera</h1>
+        {% for cam_id in camera_ids %}
+            <a href="{{ url_for('view_images', cam_id=cam_id) }}">Camera {{ cam_id }}</a>
+        {% endfor %}
+        <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+    </div>
+</body>
+</html>
+

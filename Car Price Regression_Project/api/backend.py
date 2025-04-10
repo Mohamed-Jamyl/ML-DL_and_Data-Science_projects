@@ -8,6 +8,7 @@ from datetime import datetime
 from fastapi.middleware.cors import CORSMiddleware
 from sklearn.ensemble import RandomForestClassifier
 
+
 app = FastAPI()
 
 app.add_middleware(CORSMiddleware,
@@ -18,16 +19,16 @@ app.add_middleware(CORSMiddleware,
     )  
                 
 # loading Encoders & Model
-with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\Car_Price_Predition_Project\label_encoders.pkl", "rb") as f:
+with open(r"C:\Users\RPC\Desktop\jupyter files\ML DL & Data Science projects-github\Car Price Regression_Project\label_encoders.pkl", "rb") as f:
     label_encoders = pickle.load(f)
 
-with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\Car_Price_Predition_Project\One_Hot_Encoder.pkl", "rb") as f:
+with open(r"C:\Users\RPC\Desktop\jupyter files\ML DL & Data Science projects-github\Car Price Regression_Project\One_Hot_Encoder.pkl", "rb") as f:
     One_Hot_Encoder = pickle.load(f)
 
-with open (r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\Car_Price_Predition_Project\scaler.pkl", "rb") as file : 
+with open (r"C:\Users\RPC\Desktop\jupyter files\ML DL & Data Science projects-github\Car Price Regression_Project\scaler.pkl", "rb") as file : 
     scaler = pickle.load(file)
 
-with open(r"C:\Users\RPC\Desktop\jupyter files\machine learning & data science projects-github\Car_Price_Predition_Project\RandomForestRegressor_model.pkl","rb") as file2 : 
+with open(r"C:\Users\RPC\Desktop\jupyter files\ML DL & Data Science projects-github\Car Price Regression_Project\RandomForestRegressor_model.pkl","rb") as file2 : 
      RandomForestRegressor_model = pickle.load(file2)
 
 class CarInput(BaseModel):

@@ -1,0 +1,11 @@
+|__ app.py  (backend)
+├── Face_Alert.py
+├── templates/
+│   ├── index.html
+│   ├── login.html
+│   └── upload.html
+└── static/
+|   |__ unknown_pics/
+|   |__ uploads/
+|   |__ styles.css
+|__ Known_pics/   
