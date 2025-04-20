@@ -1,13 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pickle
-import pandas as pd
-import numpy as np
+from pandas import DataFrame, concat
+from numpy import append
 from sklearn.preprocessing import LabelEncoder,OneHotEncoder, StandardScaler
 from datetime import datetime
 from fastapi.middleware.cors import CORSMiddleware
 from sklearn.ensemble import RandomForestClassifier
-
+from pickle import load
 
 app = FastAPI()
 
@@ -19,17 +19,17 @@ app.add_middleware(CORSMiddleware,
     )  
                 
 # loading Encoders & Model
-with open(r"C:\Users\RPC\Desktop\jupyter files\ML DL & Data Science projects-github\Car Price Regression_Project\label_encoders.pkl", "rb") as f:
-    label_encoders = pickle.load(f)
+with open(r"C:\Users\RPC\Desktop\jupyter files\AI & Data Science projects-github\Car Price Regression_Project\label_encoders.pkl", "rb") as f:
+    label_encoders = load(f)
 
-with open(r"C:\Users\RPC\Desktop\jupyter files\ML DL & Data Science projects-github\Car Price Regression_Project\One_Hot_Encoder.pkl", "rb") as f:
-    One_Hot_Encoder = pickle.load(f)
+with open(r"C:\Users\RPC\Desktop\jupyter files\AI & Data Science projects-github\Car Price Regression_Project\One_Hot_Encoder.pkl", "rb") as f:
+    One_Hot_Encoder = load(f)
 
-with open (r"C:\Users\RPC\Desktop\jupyter files\ML DL & Data Science projects-github\Car Price Regression_Project\scaler.pkl", "rb") as file : 
-    scaler = pickle.load(file)
+with open (r"C:\Users\RPC\Desktop\jupyter files\AI & Data Science projects-github\Car Price Regression_Project\scaler.pkl", "rb") as file : 
+    scaler = load(file)
 
-with open(r"C:\Users\RPC\Desktop\jupyter files\ML DL & Data Science projects-github\Car Price Regression_Project\RandomForestRegressor_model.pkl","rb") as file2 : 
-     RandomForestRegressor_model = pickle.load(file2)
+with open(r"C:\Users\RPC\Desktop\jupyter files\AI & Data Science projects-github\Car Price Regression_Project\RandomForestRegressor_model.pkl","rb") as file2 : 
+     RandomForestRegressor_model = load(file2)
 
 class CarInput(BaseModel):
     Levy:int
@@ -53,7 +53,7 @@ def predict(car_data:CarInput):
     
     try :
 
-        df = pd.DataFrame([car_data.dict()])
+        df = DataFrame([car_data.dict()])
         # Feature Extraction
         df["Age_of_Car"] = datetime.now().year - df["Prod_year"]
 
@@ -65,7 +65,7 @@ def predict(car_data:CarInput):
             
                 unseen_values = set(df[col]) - set(label.classes_)
                 if unseen_values:
-                    label.classes_ = np.append(label.classes_, list(unseen_values))  
+                    label.classes_ = append(label.classes_, list(unseen_values))  
 
                 df[col] = label.transform(df[col])
             else:
@@ -74,8 +74,8 @@ def predict(car_data:CarInput):
         # One Hot Encoder
         one_hot_columns = ["Gear_box_type","Drive_wheels"]
         ohe_encoded_data = One_Hot_Encoder.transform(df[one_hot_columns])
-        ohe_encoded_data_df = pd.DataFrame(ohe_encoded_data, columns=One_Hot_Encoder.get_feature_names_out(one_hot_columns), index=df.index)
-        df2 = pd.concat([df, ohe_encoded_data_df], axis=1)
+        ohe_encoded_data_df = DataFrame(ohe_encoded_data, columns=One_Hot_Encoder.get_feature_names_out(one_hot_columns), index=df.index)
+        df2 = concat([df, ohe_encoded_data_df], axis=1)
         df2.drop(columns=one_hot_columns, inplace=True)
 
         order_in_fit = ['Levy', 'Prod_year', 'Engine_volume', 'Mileage', 'Cylinders', 'Airbags',
